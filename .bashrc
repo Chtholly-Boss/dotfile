@@ -69,15 +69,6 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -123,34 +114,7 @@ export LESS="--RAW-CONTROL-CHARS"
 # Use colors for less, man, etc.
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP
 
-export PATH=/home/cauchy/comp/user-land-filesystem/driver/user_ddriver/bin:$PATH
-export DDRIVER_TYPE='u'
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/cauchy/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/cauchy/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/cauchy/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/cauchy/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-# Software Install Path
-export BUN_INSTALL="$HOME/.bun"
-export CUDA_HOME="/usr/local/cuda-12.6/"
-export CUDA_INSTALL_PATH="/usr/local/cuda-12.6/"
 # PATH Settings
-export PATH="/opt/nvim-linux64/bin:\
-~/bin:\
-~/miniconda3/bin:\
-/usr/local/texlive/2025/bin/x86_64-linux/:\
-$CUDA_INSTALL_PATH/bin:\
-$BUN_INSTALL/bin:\
+export PATH="~/bin:\
 $PATH"
 
-export QT_QPA_PLATFORM=xcb
